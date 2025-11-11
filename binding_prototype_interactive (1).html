@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Binding.com Interactive Prototype</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    .navbar { background: #1E3A8A; color: white; padding: 15px; text-align: center; font-size: 20px; font-weight: bold; }
+    .steps { display: flex; justify-content: space-around; background: #E5E7EB; padding: 10px; }
+    .step { padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    .active { background: #2563EB; color: white; }
+    .container { padding: 20px; text-align: center; }
+    .description { max-width: 800px; margin: 20px auto; text-align: left; font-size: 16px; line-height: 1.5; }
+    input, select, button { padding: 10px; margin: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; }
+    button.primary { background-color: #2563EB; color: white; border: none; }
+    button.secondary { background-color: #E5E7EB; color: #111827; border: none; }
+    .clause-box { border: 1px solid #ccc; padding: 15px; margin: 20px auto; max-width: 600px; border-radius: 8px; background: #fff; }
+</style>
+<script>
+    function showStep(step) {
+        document.querySelectorAll('.screen').forEach(div => div.style.display = 'none');
+        document.getElementById('step' + step).style.display = 'block';
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('nav' + step).classList.add('active');
+    }
+</script>
+</head>
+<body onload="showStep(1)">
+<div class='navbar'>Binding.com Interactive Prototype</div>
+<div class='steps'>
+    <div id='nav1' class='step' onclick='showStep(1)'>Step 1: Create/Upload</div>
+    <div id='nav2' class='step' onclick='showStep(2)'>Step 2: Requirements</div>
+    <div id='nav3' class='step' onclick='showStep(3)'>Step 3: Clauses</div>
+    <div id='nav4' class='step' onclick='showStep(4)'>Step 4: Finalize</div>
+</div>
+<div class='container'>
+    <!-- Step 1 -->
+    <div id='step1' class='screen'>
+        <h2>Step 1: Create or Upload Contract</h2>
+        <div class='description'>
+            <p>Start by creating a new contract or uploading an existing one. Choose an option below:</p>
+        </div>
+        <button class='primary'>Create Contract</button>
+        <button class='secondary'>Upload Contract</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div id='step2' class='screen' style='display:none;'>
+        <h2>Step 2: Set Requirements</h2>
+        <div class='description'>
+            <p>Answer a few basic questions to tailor your contract:</p>
+        </div>
+        <select>
+            <option>Select Contract Type</option>
+            <option>Service Agreement</option>
+            <option>NDA</option>
+            <option>Employment Contract</option>
+        </select>
+        <select>
+            <option>Select Location</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Australia</option>
+        </select>
+        <input type='text' placeholder='Governing Law'>
+        <br>
+        <button class='primary' onclick='showStep(3)'>Next</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div id='step3' class='screen' style='display:none;'>
+        <h2>Step 3: Amend or Accept Clauses</h2>
+        <div class='description'>
+            <p>Review suggested clauses and choose to accept or amend:</p>
+        </div>
+        <div class='clause-box'>
+            <strong>Clause 1 | Article I</strong>
+            <p>The Service Provider shall render the services with reasonable skill and care.</p>
+            <button class='secondary'>Amend</button>
+            <button class='primary'>Accept</button>
+        </div>
+        <button class='primary' onclick='showStep(4)'>Next</button>
+    </div>
+
+    <!-- Step 4 -->
+    <div id='step4' class='screen' style='display:none;'>
+        <h2>Step 4: Finalize Document</h2>
+        <div class='description'>
+            <p>Your contract is ready! Choose an option below:</p>
+        </div>
+        <button class='primary'>Download for Free</button>
+        <button class='secondary'>Subscribe for E-Signature & Storage</button>
+    </div>
+</div>
+</body>
+</html>
