@@ -21,9 +21,13 @@
         let clauses = []; // Initialize an empty array for clauses
 
         function showStep(step) {
+            // Hide all steps
             document.querySelectorAll('.screen').forEach(div => div.style.display = 'none');
+            // Show the selected step
             document.getElementById('step' + step).style.display = 'block';
+            // Remove 'active' class from all steps
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            // Add 'active' class to the current step
             document.getElementById('nav' + step).classList.add('active');
 
             // Show clauses when moving to Step 3
@@ -33,11 +37,14 @@
         }
 
         function showCreateContract() {
+            // Prompt for contract text
             const contractText = prompt("Please enter your contract text:");
             if (contractText) {
-                clauses = contractText.split('.').map(clause => clause.trim()).filter(clause => clause); // Split and clean clauses
+                // Split and clean clauses
+                clauses = contractText.split('.').map(clause => clause.trim()).filter(clause => clause);
                 alert("Contract created with " + clauses.length + " clauses.");
-                showStep(2); // Move to Step 2
+                // Move to Step 2
+                showStep(2);
             }
         }
 
